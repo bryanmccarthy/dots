@@ -1,8 +1,28 @@
 .Controls {
   display: flex;
   justify-content: center;
-  background-color: bisque;
+  background-color:#242424;
+  border-bottom: 8px solid #333;
   padding: 10px;
+}
+
+.ColorSelection {
+  display: flex;
+  margin: 0 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Color {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 0 10px;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.2;
+  }
 }
 
 button {
@@ -10,8 +30,8 @@ button {
   width: 80px;
   border: none;
   border-radius: 5px;
-  background-color: #242424;
-  color: white;
+  background-color: white;
+  color: black;
   margin: 0 10px;
   cursor: pointer;
 

@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <Controls />
+      <Controls setSelectedColor={setSelectedColor}/>
       <div className="Canvas" onClick={handleMouseClick}>
         {dots.map((dot, index) => (
           <div 
