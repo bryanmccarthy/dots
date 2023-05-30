@@ -19,16 +19,20 @@ const sizes = [
 interface ControlsProps {
   handleUndo: () => void;
   handleRedo: () => void;
+  undoneCount: number;
   selectedColor: string;
   selectedSize: number;
   setSelectedColor: (color: string) => void;
   setSelectedSize: (size: number) => void;
 }
 
-function Controls({ handleUndo, handleRedo, selectedColor, setSelectedColor, selectedSize, setSelectedSize }: ControlsProps) {
+function Controls({ handleUndo, handleRedo, undoneCount, selectedColor, setSelectedColor, selectedSize, setSelectedSize }: ControlsProps) {
 
   return (
     <div className="Controls">
+      <div className="UndoneCount">
+        Undone: {undoneCount}
+      </div>
       <button onClick={handleUndo}>Undo</button>
       <button onClick={handleRedo}>Redo</button>
       <div className="ColorSelection">

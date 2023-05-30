@@ -14,6 +14,7 @@ function App() {
   const [undoStack, setUndoStack] = useState<Dot[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>('white');
   const [selectedSize, setSelectedSize] = useState<number>(30);
+  const [undoneCount, setUndoneCount] = useState<number>(0);
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setDots([...dots, {x: event.clientX, y: event.clientY, color: selectedColor, size: selectedSize}]);
@@ -23,6 +24,7 @@ function App() {
     if (dots.length > 0) {
       setUndoStack([...undoStack, dots[dots.length - 1]]);
       setDots(dots.slice(0, dots.length - 1));
+      setUndoneCount(undoneCount + 1);
     }
   }
 
@@ -30,6 +32,7 @@ function App() {
     if (undoStack.length > 0) {
       setDots([...dots, undoStack[undoStack.length - 1]]);
       setUndoStack(undoStack.slice(0, undoStack.length - 1));
+      setUndoneCount(undoneCount - 1);
     }
   }
 
@@ -38,6 +41,7 @@ function App() {
       <Controls 
         handleUndo={handleUndo} 
         handleRedo={handleRedo}
+        undoneCount={undoneCount}
         selectedColor={selectedColor}
         selectedSize={selectedSize}
         setSelectedColor={setSelectedColor} 
