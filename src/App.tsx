@@ -6,16 +6,18 @@ interface Dot {
   x: number;
   y: number;
   color: string;
+  size: number;
 }
 
 function App() {
   const [dots, setDots] = useState<Dot[]>([]);
   const [undoStack, setUndoStack] = useState<Dot[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>('white');
+  const [selectedSize, setSelectedSize] = useState<number>(30);
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     console.log(event.clientX, event.clientY);
-    setDots([...dots, {x: event.clientX, y: event.clientY, color: selectedColor}]);
+    setDots([...dots, {x: event.clientX, y: event.clientY, color: selectedColor, size: selectedSize}]);
   }
 
   const handleUndo = () => {
@@ -34,7 +36,12 @@ function App() {
 
   return (
     <div className="App">
-      <Controls handleUndo={handleUndo} handleRedo={handleRedo} setSelectedColor={setSelectedColor}/>
+      <Controls 
+        handleUndo={handleUndo} 
+        handleRedo={handleRedo} 
+        setSelectedColor={setSelectedColor} 
+        setSelectedSize={setSelectedSize} 
+      />
       <div className="Canvas" onClick={handleMouseClick}>
         {dots.map((dot, index) => (
           <div 
@@ -43,9 +50,9 @@ function App() {
             style={{
               position: 'absolute', 
               left: dot.x, 
-              top: dot.y - 68,
-              height: '30px',
-              width: '30px',
+              top: dot.y - 98,
+              height: `${dot.size}px`,
+              width: `${dot.size}px`,
               borderRadius: '50%', 
               backgroundColor: dot.color,
               transform: 'translate(-50%, -50%)'
