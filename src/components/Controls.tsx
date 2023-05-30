@@ -9,15 +9,17 @@ const colors = [
 ]
 
 interface ControlsProps {
+  handleUndo: () => void;
+  handleRedo: () => void;
   setSelectedColor: (color: string) => void;
 }
 
-function Controls({ setSelectedColor }: ControlsProps) {
+function Controls({ handleUndo, handleRedo, setSelectedColor }: ControlsProps) {
 
   return (
     <div className="Controls">
-      <button>Undo</button>
-      <button>Redo</button>
+      <button onClick={handleUndo}>Undo</button>
+      <button onClick={handleRedo}>Redo</button>
       <div className="ColorSelection">
         {colors.map((color, index) => (
           <div
