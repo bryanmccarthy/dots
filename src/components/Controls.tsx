@@ -19,11 +19,13 @@ const sizes = [
 interface ControlsProps {
   handleUndo: () => void;
   handleRedo: () => void;
+  selectedColor: string;
+  selectedSize: number;
   setSelectedColor: (color: string) => void;
   setSelectedSize: (size: number) => void;
 }
 
-function Controls({ handleUndo, handleRedo, setSelectedColor, setSelectedSize }: ControlsProps) {
+function Controls({ handleUndo, handleRedo, selectedColor, setSelectedColor, selectedSize, setSelectedSize }: ControlsProps) {
 
   return (
     <div className="Controls">
@@ -34,7 +36,7 @@ function Controls({ handleUndo, handleRedo, setSelectedColor, setSelectedSize }:
           <div
             key={index}
             className="Color"
-            style={{ backgroundColor: color }}
+            style={{ backgroundColor: color, opacity: selectedColor === color ? 1 : 0.5 }}
             onClick={() => setSelectedColor(color)}
           >
           </div>
@@ -45,7 +47,7 @@ function Controls({ handleUndo, handleRedo, setSelectedColor, setSelectedSize }:
           <div
             key={index}
             className="Size"
-            style={{ height: size, width: size }}
+            style={{ height: size, width: size, opacity: selectedSize === size ? 1 : 0.5 }}
             onClick={() => setSelectedSize(size)}
           >
           </div>

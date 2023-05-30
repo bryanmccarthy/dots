@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Controls from './components/Controls';
 
@@ -16,7 +16,6 @@ function App() {
   const [selectedSize, setSelectedSize] = useState<number>(30);
 
   const handleMouseClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log(event.clientX, event.clientY);
     setDots([...dots, {x: event.clientX, y: event.clientY, color: selectedColor, size: selectedSize}]);
   }
 
@@ -38,7 +37,9 @@ function App() {
     <div className="App">
       <Controls 
         handleUndo={handleUndo} 
-        handleRedo={handleRedo} 
+        handleRedo={handleRedo}
+        selectedColor={selectedColor}
+        selectedSize={selectedSize}
         setSelectedColor={setSelectedColor} 
         setSelectedSize={setSelectedSize} 
       />
