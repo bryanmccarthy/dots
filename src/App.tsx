@@ -1,12 +1,13 @@
-import './App.css'
+import './App.css';
+import Controls from './components/Controls';
 
 function App() {
 
   return (
-    <>
-      <p>Hello</p>
-    </>
+    <div className="App">
+      <Controls />
+    </div>
   )
 }
 
-export default App
+export default App;
