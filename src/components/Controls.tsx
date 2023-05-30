@@ -24,9 +24,10 @@ interface ControlsProps {
   selectedSize: number;
   setSelectedColor: (color: string) => void;
   setSelectedSize: (size: number) => void;
+  handleResetCanvas: () => void;
 }
 
-function Controls({ handleUndo, handleRedo, undoneCount, selectedColor, setSelectedColor, selectedSize, setSelectedSize }: ControlsProps) {
+function Controls({ handleUndo, handleRedo, undoneCount, selectedColor, setSelectedColor, selectedSize, setSelectedSize, handleResetCanvas }: ControlsProps) {
 
   return (
     <div className="Controls">
@@ -35,6 +36,7 @@ function Controls({ handleUndo, handleRedo, undoneCount, selectedColor, setSelec
       </div>
       <button onClick={handleUndo}>Undo</button>
       <button onClick={handleRedo}>Redo</button>
+      <button style={{ backgroundColor: 'salmon' }} onClick={handleResetCanvas}>Reset</button>
       <div className="ColorSelection">
         {colors.map((color, index) => (
           <div

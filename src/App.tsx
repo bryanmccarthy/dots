@@ -28,12 +28,18 @@ function App() {
     }
   }
 
-  const handleRedo =() => {
+  const handleRedo = () => {
     if (undoStack.length > 0) {
       setDots([...dots, undoStack[undoStack.length - 1]]);
       setUndoStack(undoStack.slice(0, undoStack.length - 1));
       setUndoneCount(undoneCount - 1);
     }
+  }
+
+  const handleResetCanvas = () => {
+    setDots([]);
+    setUndoStack([]);
+    setUndoneCount(0);
   }
 
   return (
@@ -45,7 +51,8 @@ function App() {
         selectedColor={selectedColor}
         selectedSize={selectedSize}
         setSelectedColor={setSelectedColor} 
-        setSelectedSize={setSelectedSize} 
+        setSelectedSize={setSelectedSize}
+        handleResetCanvas={handleResetCanvas}
       />
       <div className="Canvas" onClick={handleMouseClick}>
         {dots.map((dot, index) => (
